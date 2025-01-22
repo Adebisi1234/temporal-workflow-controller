@@ -1,0 +1,63 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
+  min-height: 100svh;
+  max-width: 100svw;
+  margin: 0;
+  padding: 0;
+  background-color: #1f2023;
+  scroll-behavior: smooth;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+body {
+  width: 100%;
+}
+
+main,
+section {
+  width: 100%;
+  text-align: center;
+  min-height: 30svh;
+  height: fit-content;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main,
+section {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+li {
+  list-style-type: circle;
+}
+a {
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  main,
+  section {
+    padding: 0px 8px;
+  }
+}
+@media (max-width: 768px) {
+  main,
+  section {
+    padding: 0px 16px;
+  }
+}
