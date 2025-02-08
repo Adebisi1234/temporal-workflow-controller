@@ -37,6 +37,11 @@ function App() {
           />
         </main>
       )}
+      {!workflow && (
+        <main>
+          <Header />
+        </main>
+      )}
     </>
   );
 }
