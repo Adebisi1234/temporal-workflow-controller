@@ -1,19 +1,17 @@
 import axios from "axios";
-
+const base = process.env.BASE_URL;
 export async function retryActivity(activityName: string, id: string) {
-  return axios.get(
-    `http://localhost:5000/workflow/${id}/activity/retry/${activityName}`
-  );
+  return axios.get(`${base}workflow/${id}/activity/retry/${activityName}`);
 }
 
 export async function terminateWorkflow(id: string) {
-  return axios.get(`http://localhost:5000/workflow/terminate/${id}`);
+  return axios.get(`${base}workflow/terminate/${id}`);
 }
 
 export async function pollWorkflow(id: string) {
-  return axios.get(`http://localhost:5000/workflow/${id}/query`);
+  return axios.get(`${base}workflow/${id}/query`);
 }
 
 export async function startWorkflow() {
-  return axios.get("http://localhost:5000/workflow/start");
+  return axios.get("${base}workflow/start");
 }
