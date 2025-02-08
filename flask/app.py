@@ -4,8 +4,9 @@ from temporalio.client import Client, WorkflowFailureError
 
 from shared import TASK_QUEUE_NAME
 from workflows import SampleWorkflow
-from uuid import uuid4
+import datetime
 from flask_cors import CORS
+import urllib.parse
 app = Flask(__name__)
 CORS(app)
 
@@ -15,7 +16,7 @@ CORS(app)
 async def start_workflow():
    # Create client connected to server at the given address
     client: Client = await Client.connect("localhost:7233")
-    workflow_id =  str(uuid4())
+    workflow_id =  str(datetime.datetime.now())
     try:
         handle = await client.start_workflow(
             SampleWorkflow.run,
@@ -63,11 +64,11 @@ async def retry_workflow(id, activity_name):
         client: Client = await Client.connect("localhost:7233")
         handle = client.get_workflow_handle(id)
         print("retrying: " + activity_name)
-        await handle.signal(SampleWorkflow.retryActivity, activity_name)
+        await handle.signal(SampleWorkflow.retryActivity, urllib.parse.unquote(activity_name))
         return f"Retrying activity {activity_name}"
     except Exception as err:
         print(err)
-        return "error"
+        return err
 
 # @@@SNIPEND
 

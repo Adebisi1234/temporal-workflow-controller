@@ -24,6 +24,11 @@ export default function Activities({
     let intervalId: any;
     function pollServerEveryFiveSeconds() {
       intervalId = setInterval(async () => {
+        if (
+          activities.every((activity: any) => activity.status === "successful")
+        ) {
+          return;
+        }
         const data = await pollWorkflow(id);
         if (data.status < 400 && data.data) {
           if (

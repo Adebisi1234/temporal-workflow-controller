@@ -9,7 +9,6 @@ export default function Footer({
   setWorkflowStatus: any;
   id: string;
 }) {
-  console.log({ workflowStatus });
   return (
     <footer className="mt-20">
       {workflowStatus === "Successful" ? (
